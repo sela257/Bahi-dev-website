@@ -1195,7 +1195,7 @@ function throttle(func, limit) {
   let inThrottle
   return function () {
     const args = arguments
-    
+
     if (!inThrottle) {
       func.apply(this, args)
       inThrottle = true
@@ -1229,3 +1229,389 @@ window.generateCaptcha = generateCaptcha
 window.closeBiometricModal = closeBiometricModal
 window.closeOrderModal = closeOrderModal
 window.showAlert = showAlert
+
+// إضافة وظائف خاصة بالهواتف المحمولة
+
+// تحسين التنقل للهواتف
+function initializeMobileNavigation() {
+  const hamburger = document.querySelector(".hamburger")
+  const navMenu = document.querySelector(".nav-menu")
+  const navLinks = document.querySelectorAll(".nav-link")
+
+  if (hamburger && navMenu) {
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.toggle("active")
+      hamburger.classList.toggle("active")
+
+      // منع التمرير عند فتح القائمة
+      if (navMenu.classList.contains("active")) {
+        document.body.style.overflow = "hidden"
+      } else {
+        document.body.style.overflow = ""
+      }
+    })
+
+    // إغلاق القائمة عند النقر على رابط
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("active")
+        hamburger.classList.remove("active")
+        document.body.style.overflow = ""
+      })
+    })
+
+    // إغلاق القائمة عند النقر خارجها
+    document.addEventListener("click", (e) => {
+      if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+        navMenu.classList.remove("active")
+        hamburger.classList.remove("active")
+        document.body.style.overflow = ""
+      }
+    })
+  }
+}
+
+// تحسين اللمس للهواتف
+function initializeTouchOptimizations() {
+  // إضافة تأثير اللمس للأزرار
+  const touchElements = document.querySelectorAll(
+    ".btn-primary, .btn-secondary, .feature-card, .signal-action, .execute-btn",
+  )
+
+  touchElements.forEach((element) => {
+    element.addEventListener("touchstart", function () {
+      this.style.transform = "scale(0.98)"
+    })
+
+    element.addEventListener("touchend", function () {
+      this.style.transform = ""
+    })
+  })
+
+  // تحسين التمرير للرسوم البيانية
+  const chartContainer = document.querySelector(".chart-container")
+  if (chartContainer) {
+    let isScrolling = false
+
+    chartContainer.addEventListener("touchstart", () => {
+      isScrolling = true
+    })
+
+    chartContainer.addEventListener("touchend", () => {
+      isScrolling = false
+    })
+  }
+}
+
+// تحسين النماذج للهواتف
+function initializeMobileForms() {
+  // تحسين حقول الإدخال
+  const inputs = document.querySelectorAll("input, select, textarea")
+
+  inputs.forEach((input) => {
+    // إضافة تأثير التركيز
+    input.addEventListener("focus", function () {
+      this.parentElement.style.borderColor = "#ff6b35"
+      this.parentElement.style.boxShadow = "0 0 10px rgba(255, 107, 53, 0.3)"
+    })
+
+    input.addEventListener("blur", function () {
+      this.parentElement.style.borderColor = ""
+      this.parentElement.style.boxShadow = ""
+    })
+  })
+
+  // تحسين رمز التحقق للهواتف
+  const codeInputs = document.querySelectorAll(".code-input")
+  codeInputs.forEach((input, index) => {
+    input.addEventListener("input", function (e) {
+      // الانتقال التلقائي للحقل التالي
+      if (this.value.length === 1 && index < codeInputs.length - 1) {
+        codeInputs[index + 1].focus()
+      }
+    })
+
+    input.addEventListener("keydown", function (e) {
+      // العودة للحقل السابق عند الحذف
+      if (e.key === "Backspace" && this.value === "" && index > 0) {
+        codeInputs[index - 1].focus()
+      }
+    })
+  })
+}
+
+// تحسين منصة التداول للهواتف
+function initializeMobileTrading() {
+  // تحسين التبديل بين التبويبات
+  const tabBtns = document.querySelectorAll(".tab-btn")
+  tabBtns.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      // إضافة تأثير بصري للنقر
+      this.style.background = "rgba(255, 107, 53, 0.3)"
+      setTimeout(() => {
+        this.style.background = ""
+      }, 200)
+    })
+  })
+
+  // تحسين أزرار الحجم
+  const volumeBtns = document.querySelectorAll(".volume-btn")
+  volumeBtns.forEach((btn) => {
+    btn.addEventListener("touchstart", function () {
+      this.style.background = "#ff6b35"
+      this.style.color = "#fff"
+    })
+
+    btn.addEventListener("touchend", function () {
+      setTimeout(() => {
+        this.style.background = ""
+        this.style.color = ""
+      }, 100)
+    })
+  })
+
+  // تحسين قائمة الرموز للهواتف
+  const symbolItems = document.querySelectorAll(".symbol-item")
+  symbolItems.forEach((item) => {
+    item.addEventListener("touchstart", function () {
+      this.style.background = "rgba(255, 107, 53, 0.2)"
+    })
+
+    item.addEventListener("touchend", function () {
+      setTimeout(() => {
+        if (!this.classList.contains("active")) {
+          this.style.background = ""
+        }
+      }, 200)
+    })
+  })
+}
+
+// تحسين الرسوم البيانية للهواتف
+function initializeMobileCharts() {
+  const canvas = document.getElementById("tradingChart")
+  if (!canvas) return
+
+  let touchStartX = 0
+  let touchStartY = 0
+  let isZooming = false
+
+  canvas.addEventListener("touchstart", (e) => {
+    if (e.touches.length === 1) {
+      touchStartX = e.touches[0].clientX
+      touchStartY = e.touches[0].clientY
+    } else if (e.touches.length === 2) {
+      isZooming = true
+    }
+    e.preventDefault()
+  })
+
+  canvas.addEventListener("touchmove", (e) => {
+    if (e.touches.length === 1 && !isZooming) {
+      const touchX = e.touches[0].clientX
+      const touchY = e.touches[0].clientY
+      const deltaX = touchX - touchStartX
+      const deltaY = touchY - touchStartY
+
+      // تحريك الرسم البياني (محاكاة)
+      if (Math.abs(deltaX) > 10) {
+        // هنا يمكن إضافة منطق تحريك الرسم البياني
+        touchStartX = touchX
+      }
+    }
+    e.preventDefault()
+  })
+
+  canvas.addEventListener("touchend", (e) => {
+    isZooming = false
+    e.preventDefault()
+  })
+}
+
+// تحسين الإشعارات للهواتف
+function showMobileAlert(message, type = "info") {
+  const alert = document.createElement("div")
+  alert.className = `alert alert-${type} mobile-alert`
+  alert.innerHTML = `
+    <i class="fas fa-${type === "success" ? "check-circle" : type === "error" ? "exclamation-triangle" : "info-circle"}"></i>
+    <span>${message}</span>
+    <button class="alert-close" onclick="this.parentElement.remove()">
+      <i class="fas fa-times"></i>
+    </button>
+  `
+
+  // إضافة أنماط خاصة للهواتف
+  alert.style.cssText = `
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    z-index: 10000;
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    animation: slideDown 0.3s ease;
+  `
+
+  document.body.appendChild(alert)
+
+  // إزالة تلقائية بعد 4 ثوان
+  setTimeout(() => {
+    if (alert.parentElement) {
+      alert.style.animation = "slideUp 0.3s ease"
+      setTimeout(() => alert.remove(), 300)
+    }
+  }, 4000)
+}
+
+// تحسين تحميل الصفحة للهواتف
+function initializeMobileOptimizations() {
+  // تحسين الأداء للهواتف
+  if (window.innerWidth <= 768) {
+    // تقليل معدل التحديث للبيانات المباشرة
+    if (realTimeInterval) {
+      clearInterval(realTimeInterval)
+      realTimeInterval = setInterval(() => {
+        updateRealTimePrices()
+        updateAccountStats()
+      }, 3000) // كل 3 ثوان بدلاً من كل ثانية
+    }
+
+    // تبسيط الرسوم المتحركة
+    const animatedElements = document.querySelectorAll(".floating-shapes, .auth-particles")
+    animatedElements.forEach((el) => {
+      el.style.display = "none"
+    })
+
+    // تحسين الخطوط
+    document.body.style.fontSize = "14px"
+  }
+}
+
+// تحسين التمرير للهواتف
+function initializeMobileScrolling() {
+  let ticking = false
+
+  function updateScrollPosition() {
+    // تحديث شريط التنقل عند التمرير
+    const navbar = document.querySelector(".navbar")
+    if (navbar) {
+      if (window.scrollY > 100) {
+        navbar.style.background = "rgba(10, 10, 10, 0.98)"
+      } else {
+        navbar.style.background = "rgba(10, 10, 10, 0.95)"
+      }
+    }
+    ticking = false
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(updateScrollPosition)
+      ticking = true
+    }
+  })
+}
+
+// تحسين إدارة الذاكرة للهواتف
+function initializeMobileMemoryManagement() {
+  // تنظيف الذاكرة عند إخفاء الصفحة
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      // إيقاف التحديثات المباشرة
+      if (realTimeInterval) {
+        clearInterval(realTimeInterval)
+      }
+    } else {
+      // استئناف التحديثات
+      if (document.body.classList.contains("trading-page")) {
+        startRealTimeData()
+      }
+    }
+  })
+
+  // تنظيف عند إغلاق الصفحة
+  window.addEventListener("beforeunload", () => {
+    if (realTimeInterval) {
+      clearInterval(realTimeInterval)
+    }
+  })
+}
+
+// تحديث دالة التهيئة الرئيسية
+const originalInitializeApp = initializeApp
+initializeApp = () => {
+  originalInitializeApp()
+
+  // إضافة التحسينات الخاصة بالهواتف
+  if (window.innerWidth <= 768) {
+    initializeMobileNavigation()
+    initializeTouchOptimizations()
+    initializeMobileForms()
+    initializeMobileTrading()
+    initializeMobileCharts()
+    initializeMobileOptimizations()
+    initializeMobileScrolling()
+    initializeMobileMemoryManagement()
+  }
+}
+
+// إعادة تعريف دالة showAlert للهواتف
+const originalShowAlert = showAlert
+showAlert = (message, type = "info") => {
+  if (window.innerWidth <= 768) {
+    showMobileAlert(message, type)
+  } else {
+    originalShowAlert(message, type)
+  }
+}
+
+// إضافة أنماط CSS للرسوم المتحركة الخاصة بالهواتف
+const mobileStyles = `
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+  }
+
+  .mobile-alert .alert-close {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.2rem;
+    margin-left: auto;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-optimized {
+      transform: translateZ(0);
+      backface-visibility: hidden;
+    }
+  }
+`
+
+// إضافة الأنماط إلى الصفحة
+const styleSheet = document.createElement("style")
+styleSheet.textContent = mobileStyles
+document.head.appendChild(styleSheet)
