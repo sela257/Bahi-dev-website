@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BaHi Security Forex - أقوى منصة تداول في العالم</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>BaHi Security Forex</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">الرئيسية</a></li>
+                <li><a href="#features" class="nav-link">المميزات</a></li>
+                <li><a href="#trading" class="nav-link">التداول</a></li>
+                <li><a href="#security" class="nav-link">الأمان</a></li>
+                <li><a href="#contact" class="nav-link">اتصل بنا</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="login.html" class="btn-login">تسجيل الدخول</a>
+                <a href="register.html" class="btn-register">إنشاء حساب</a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="gradient-text">BaHi Security Forex</span>
+                    <br>أقوى منصة تداول في العالم
+                </h1>
+                <p class="hero-subtitle">
+                    تداول بأمان مطلق مع أحدث تقنيات الحماية والذكاء الاصطناعي
+                    <br>اربح أكثر من 500% شهرياً مع خبرائنا
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" data-target="1000000">0</span>
+                        <span class="stat-label">متداول نشط</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-target="50000000">0</span>
+                        <span class="stat-label">دولار أرباح يومية</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-target="99.9">0</span>
+                        <span class="stat-label">% نسبة الأمان</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="register.html" class="btn-primary pulse">
+                        <i class="fas fa-rocket"></i>
+                        ابدأ التداول الآن
+                    </a>
+                    <a href="#demo" class="btn-secondary">
+                        <i class="fas fa-play"></i>
+                        شاهد العرض التوضيحي
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="trading-dashboard">
+                    <div class="dashboard-header">
+                        <div class="status-indicator online"></div>
+                        <span>متصل - تداول مباشر</span>
+                    </div>
+                    <div class="price-display">
+                        <div class="currency-pair">
+                            <span class="pair">EUR/USD</span>
+                            <span class="price up" id="eur-usd">1.0856</span>
+                            <span class="change">+0.0023</span>
+                        </div>
+                        <div class="currency-pair">
+                            <span class="pair">GBP/USD</span>
+                            <span class="price down" id="gbp-usd">1.2634</span>
+                            <span class="change">-0.0012</span>
+                        </div>
+                        <div class="currency-pair">
+                            <span class="pair">USD/JPY</span>
+                            <span class="price up" id="usd-jpy">149.85</span>
+                            <span class="change">+0.45</span>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="mini-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">مميزات لا تُضاهى</h2>
+                <p class="section-subtitle">تقنيات متطورة تضمن لك النجاح في عالم التداول</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-virus"></i>
+                    </div>
+                    <h3>حماية عسكرية</h3>
+                    <p>تشفير 256-bit وحماية متعددة الطبقات ضد جميع أنواع الهجمات السيبرانية</p>
+                    <div class="feature-tech">
+                        <span class="tech-badge">AI Protection</span>
+                        <span class="tech-badge">Quantum Encryption</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>ذكاء اصطناعي متقدم</h3>
+                    <p>خوارزميات تعلم آلي تحلل السوق وتتنبأ بالحركات بدقة 95%</p>
+                    <div class="feature-tech">
+                        <span class="tech-badge">Machine Learning</span>
+                        <span class="tech-badge">Neural Networks</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightning-bolt"></i>
+                    </div>
+                    <h3>تنفيذ فوري</h3>
+                    <p>سرعة تنفيذ أقل من 0.001 ثانية مع خوادم عالية الأداء</p>
+                    <div class="feature-tech">
+                        <span class="tech-badge">Ultra-Fast</span>
+                        <span class="tech-badge">Low Latency</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>تحليل متقدم</h3>
+                    <p>أدوات تحليل فني واقتصادي متطورة مع إشارات تداول دقيقة</p>
+                    <div class="feature-tech">
+                        <span class="tech-badge">Technical Analysis</span>
+                        <span class="tech-badge">Smart Signals</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>تداول متنقل</h3>
+                    <p>تطبيق متطور للهواتف الذكية مع جميع الميزات الاحترافية</p>
+                    <div class="feature-tech">
+                        <span class="tech-badge">Mobile First</span>
+                        <span class="tech-badge">Cross Platform</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>دعم 24/7</h3>
+                    <p>فريق دعم متخصص متاح على مدار الساعة بجميع اللغات</p>
+                    <div class="feature-tech">
+                        <span class="tech-badge">24/7 Support</span>
+                        <span class="tech-badge">Multi-Language</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Security Section -->
+    <section id="security" class="security">
+        <div class="container">
+            <div class="security-content">
+                <div class="security-text">
+                    <h2 class="section-title">أمان لا يُخترق</h2>
+                    <p class="section-subtitle">نحن نحمي أموالك وبياناتك بأحدث تقنيات الأمان العالمية</p>
+                    <div class="security-features">
+                        <div class="security-item">
+                            <i class="fas fa-lock"></i>
+                            <div>
+                                <h4>تشفير كمي</h4>
+                                <p>تشفير متقدم مقاوم للحاسوب الكمي</p>
+                            </div>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-fingerprint"></i>
+                            <div>
+                                <h4>مصادقة بيومترية</h4>
+                                <p>بصمة الإصبع والوجه والصوت</p>
+                            </div>
+                        </div>
+                        <div class="security-item">
+                            <i class="fas fa-eye"></i>
+                            <div>
+                                <h4>مراقبة ذكية</h4>
+                                <p>نظام مراقبة AI يكتشف التهديدات فوراً</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="security-visual">
+                    <div class="security-shield">
+                        <div class="shield-layers">
+                            <div class="layer layer-1"></div>
+                            <div class="layer layer-2"></div>
+                            <div class="layer layer-3"></div>
+                        </div>
+                        <div class="shield-center">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="security-particles">
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trading Section -->
+    <section id="trading" class="trading-preview">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">منصة التداول الاحترافية</h2>
+                <p class="section-subtitle">تجربة تداول لا مثيل لها مع أدوات متطورة</p>
+            </div>
+            <div class="trading-interface">
+                <div class="interface-preview">
+                    <div class="preview-header">
+                        <div class="window-controls">
+                            <span class="control close"></span>
+                            <span class="control minimize"></span>
+                            <span class="control maximize"></span>
+                        </div>
+                        <div class="preview-title">BaHi Trading Platform</div>
+                    </div>
+                    <div class="preview-content">
+                        <div class="trading-sidebar">
+                            <div class="account-info">
+                                <div class="balance">
+                                    <span class="label">الرصيد</span>
+                                    <span class="amount">$125,847.50</span>
+                                </div>
+                                <div class="profit">
+                                    <span class="label">الربح اليومي</span>
+                                    <span class="amount positive">+$5,247.30</span>
+                                </div>
+                            </div>
+                            <div class="watchlist">
+                                <h4>قائمة المراقبة</h4>
+                                <div class="symbol-list">
+                                    <div class="symbol-item">
+                                        <span class="symbol">EURUSD</span>
+                                        <span class="price">1.0856</span>
+                                        <span class="change positive">+0.23%</span>
+                                    </div>
+                                    <div class="symbol-item">
+                                        <span class="symbol">GBPUSD</span>
+                                        <span class="price">1.2634</span>
+                                        <span class="change negative">-0.12%</span>
+                                    </div>
+                                    <div class="symbol-item">
+                                        <span class="symbol">USDJPY</span>
+                                        <span class="price">149.85</span>
+                                        <span class="change positive">+0.45%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="trading-main">
+                            <div class="chart-area">
+                                <canvas id="main-chart"></canvas>
+                                <div class="chart-overlay">
+                                    <div class="signal-alert">
+                                        <i class="fas fa-bullseye"></i>
+                                        <span>إشارة شراء قوية - EUR/USD</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="order-panel">
+                                <div class="order-tabs">
+                                    <button class="tab active">شراء</button>
+                                    <button class="tab">بيع</button>
+                                </div>
+                                <div class="order-form">
+                                    <div class="form-group">
+                                        <label>الحجم</label>
+                                        <input type="text" value="1.00" class="form-input">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>وقف الخسارة</label>
+                                        <input type="text" value="1.0800" class="form-input">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>جني الأرباح</label>
+                                        <input type="text" value="1.0900" class="form-input">
+                                    </div>
+                                    <button class="order-button buy">تنفيذ الصفقة</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="trading-features">
+                <div class="feature-highlight">
+                    <i class="fas fa-zap"></i>
+                    <h4>تنفيذ فوري</h4>
+                    <p>أسرع من 0.001 ثانية</p>
+                </div>
+                <div class="feature-highlight">
+                    <i class="fas fa-brain"></i>
+                    <h4>إشارات ذكية</h4>
+                    <p>دقة 95% في التنبؤات</p>
+                </div>
+                <div class="feature-highlight">
+                    <i class="fas fa-chart-area"></i>
+                    <h4>تحليل متقدم</h4>
+                    <p>أكثر من 100 مؤشر فني</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>ابدأ رحلتك نحو الثراء اليوم</h2>
+                <p>انضم إلى أكثر من مليون متداول يحققون أرباحاً استثنائية يومياً</p>
+                <div class="cta-buttons">
+                    <a href="register.html" class="btn-primary large">
+                        <i class="fas fa-rocket"></i>
+                        إنشاء حساب مجاني
+                    </a>
+                    <a href="login.html" class="btn-secondary large">
+                        <i class="fas fa-sign-in-alt"></i>
+                        تسجيل الدخول
+                    </a>
+                </div>
+                <div class="cta-guarantee">
+                    <i class="fas fa-medal"></i>
+                    <span>ضمان استرداد الأموال خلال 30 يوم</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>BaHi Security Forex</span>
+                    </div>
+                    <p>أقوى منصة تداول في العالم مع أعلى مستويات الأمان والحماية</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#features">المميزات</a></li>
+                        <li><a href="#trading">التداول</a></li>
+                        <li><a href="#security">الأمان</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>الدعم</h4>
+                    <ul>
+                        <li><a href="#">مركز المساعدة</a></li>
+                        <li><a href="#">اتصل بنا</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">الدعم المباشر</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>معلومات قانونية</h4>
+                    <ul>
+                        <li><a href="#">شروط الاستخدام</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">إخلاء المسؤولية</a></li>
+                        <li><a href="#">التراخيص</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 BaHi Security Forex. جميع الحقوق محفوظة.</p>
+                <div class="footer-badges">
+                    <span class="badge">مرخص من CySEC</span>
+                    <span class="badge">حماية SSL</span>
+                    <span class="badge">تشفير 256-bit</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

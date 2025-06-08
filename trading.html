@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة التداول - BaHi Security Forex</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="trading-page">
+    <!-- Top Navigation -->
+    <nav class="trading-nav">
+        <div class="nav-left">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>BaHi Security Forex</span>
+            </div>
+            <div class="market-status">
+                <div class="status-indicator online"></div>
+                <span>السوق مفتوح</span>
+            </div>
+        </div>
+        
+        <div class="nav-center">
+            <div class="quick-stats">
+                <div class="stat">
+                    <span class="label">الرصيد</span>
+                    <span class="value" id="accountBalance">$125,847.50</span>
+                </div>
+                <div class="stat">
+                    <span class="label">الربح/الخسارة</span>
+                    <span class="value positive" id="dailyPnL">+$5,247.30</span>
+                </div>
+                <div class="stat">
+                    <span class="label">الهامش المستخدم</span>
+                    <span class="value" id="usedMargin">$12,500.00</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="nav-right">
+            <div class="user-menu">
+                <div class="notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-count">3</span>
+                </div>
+                <div class="user-profile">
+                    <img src="/placeholder.svg?height=32&width=32" alt="Profile">
+                    <span>أحمد محمد</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Trading Interface -->
+    <div class="trading-container">
+        <!-- Sidebar -->
+        <aside class="trading-sidebar">
+            <div class="sidebar-section">
+                <h3>قائمة المراقبة</h3>
+                <div class="watchlist">
+                    <div class="symbol-item active" data-symbol="EURUSD">
+                        <div class="symbol-info">
+                            <span class="symbol">EUR/USD</span>
+                            <span class="description">يورو/دولار أمريكي</span>
+                        </div>
+                        <div class="symbol-price">
+                            <span class="price">1.0856</span>
+                            <span class="change positive">+0.0023 (+0.21%)</span>
+                        </div>
+                        <div class="mini-chart">
+                            <canvas width="60" height="30"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="symbol-item" data-symbol="GBPUSD">
+                        <div class="symbol-info">
+                            <span class="symbol">GBP/USD</span>
+                            <span class="description">جنيه إسترليني/دولار</span>
+                        </div>
+                        <div class="symbol-price">
+                            <span class="price">1.2634</span>
+                            <span class="change negative">-0.0012 (-0.09%)</span>
+                        </div>
+                        <div class="mini-chart">
+                            <canvas width="60" height="30"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="symbol-item" data-symbol="USDJPY">
+                        <div class="symbol-info">
+                            <span class="symbol">USD/JPY</span>
+                            <span class="description">دولار/ين ياباني</span>
+                        </div>
+                        <div class="symbol-price">
+                            <span class="price">149.85</span>
+                            <span class="change positive">+0.45 (+0.30%)</span>
+                        </div>
+                        <div class="mini-chart">
+                            <canvas width="60" height="30"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="symbol-item" data-symbol="GOLD">
+                        <div class="symbol-info">
+                            <span class="symbol">XAU/USD</span>
+                            <span class="description">ذهب/دولار</span>
+                        </div>
+                        <div class="symbol-price">
+                            <span class="price">2,045.30</span>
+                            <span class="change positive">+12.50 (+0.61%)</span>
+                        </div>
+                        <div class="mini-chart">
+                            <canvas width="60" height="30"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>الإشارات الذكية</h3>
+                <div class="signals">
+                    <div class="signal-item buy">
+                        <div class="signal-header">
+                            <span class="signal-type">شراء قوي</span>
+                            <span class="signal-confidence">95%</span>
+                        </div>
+                        <div class="signal-symbol">EUR/USD</div>
+                        <div class="signal-details">
+                            <span>الدخول: 1.0856</span>
+                            <span>الهدف: 1.0920</span>
+                            <span>وقف الخسارة: 1.0800</span>
+                        </div>
+                        <button class="signal-action">تنفيذ الإشارة</button>
+                    </div>
+                    
+                    <div class="signal-item sell">
+                        <div class="signal-header">
+                            <span class="signal-type">بيع متوسط</span>
+                            <span class="signal-confidence">78%</span>
+                        </div>
+                        <div class="signal-symbol">GBP/USD</div>
+                        <div class="signal-details">
+                            <span>الدخول: 1.2634</span>
+                            <span>الهدف: 1.2580</span>
+                            <span>وقف الخسارة: 1.2680</span>
+                        </div>
+                        <button class="signal-action">تنفيذ الإشارة</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>الأخبار الاقتصادية</h3>
+                <div class="news-feed">
+                    <div class="news-item high-impact">
+                        <div class="news-time">14:30</div>
+                        <div class="news-content">
+                            <span class="news-title">بيانات التضخم الأمريكي</span>
+                            <span class="news-impact">تأثير عالي</span>
+                        </div>
+                    </div>
+                    
+                    <div class="news-item medium-impact">
+                        <div class="news-time">16:00</div>
+                        <div class="news-content">
+                            <span class="news-title">قرار البنك المركزي الأوروبي</span>
+                            <span class="news-impact">تأثير متوسط</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Chart Area -->
+        <main class="chart-area">
+            <div class="chart-header">
+                <div class="chart-controls">
+                    <div class="symbol-selector">
+                        <span class="current-symbol">EUR/USD</span>
+                        <span class="current-price">1.0856</span>
+                        <span class="price-change positive">+0.0023 (+0.21%)</span>
+                    </div>
+                    
+                    <div class="timeframe-selector">
+                        <button class="timeframe-btn">1M</button>
+                        <button class="timeframe-btn">5M</button>
+                        <button class="timeframe-btn active">15M</button>
+                        <button class="timeframe-btn">1H</button>
+                        <button class="timeframe-btn">4H</button>
+                        <button class="timeframe-btn">1D</button>
+                    </div>
+                    
+                    <div class="chart-tools">
+                        <button class="tool-btn" title="خط الاتجاه">
+                            <i class="fas fa-chart-line"></i>
+                        </button>
+                        <button class="tool-btn" title="مستويات فيبوناتشي">
+                            <i class="fas fa-wave-square"></i>
+                        </button>
+                        <button class="tool-btn" title="الدعم والمقاومة">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button class="tool-btn" title="النص">
+                            <i class="fas fa-font"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="tradingChart"></canvas>
+                <div class="chart-overlay">
+                    <div class="price-line">
+                        <span class="price-value">1.0856</span>
+                    </div>
+                    <div class="crosshair"></div>
+                </div>
+            </div>
+            
+            <div class="chart-footer">
+                <div class="volume-chart">
+                    <canvas id="volumeChart"></canvas>
+                </div>
+                <div class="indicators">
+                    <div class="indicator">
+                        <span class="indicator-name">RSI(14)</span>
+                        <span class="indicator-value">67.3</span>
+                    </div>
+                    <div class="indicator">
+                        <span class="indicator-name">MACD</span>
+                        <span class="indicator-value positive">0.0012</span>
+                    </div>
+                    <div class="indicator">
+                        <span class="indicator-name">MA(20)</span>
+                        <span class="indicator-value">1.0834</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Order Panel -->
+        <aside class="order-panel">
+            <div class="panel-tabs">
+                <button class="tab-btn active" data-tab="order">أمر جديد</button>
+                <button class="tab-btn" data-tab="positions">المراكز</button>
+                <button class="tab-btn" data-tab="history">التاريخ</button>
+            </div>
+            
+            <div class="tab-content active" id="order-tab">
+                <div class="order-form">
+                    <div class="order-type-selector">
+                        <button class="order-type-btn active buy" data-type="buy">
+                            <span>شراء</span>
+                            <span class="price">1.0856</span>
+                        </button>
+                        <button class="order-type-btn sell" data-type="sell">
+                            <span>بيع</span>
+                            <span class="price">1.0854</span>
+                        </button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>الرمز</label>
+                        <select class="form-select">
+                            <option value="EURUSD">EUR/USD</option>
+                            <option value="GBPUSD">GBP/USD</option>
+                            <option value="USDJPY">USD/JPY</option>
+                            <option value="GOLD">XAU/USD</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>الحجم (لوت)</label>
+                        <div class="volume-selector">
+                            <button class="volume-btn" onclick="adjustVolume(-0.01)">-</button>
+                            <input type="number" class="volume-input" value="1.00" step="0.01" min="0.01">
+                            <button class="volume-btn" onclick="adjustVolume(0.01)">+</button>
+                        </div>
+                        <div class="volume-presets">
+                            <button class="preset-btn" onclick="setVolume(0.1)">0.1</button>
+                            <button class="preset-btn" onclick="setVolume(0.5)">0.5</button>
+                            <button class="preset-btn" onclick="setVolume(1.0)">1.0</button>
+                            <button class="preset-btn" onclick="setVolume(2.0)">2.0</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>نوع الأمر</label>
+                        <select class="form-select" id="orderTypeSelect">
+                            <option value="market">أمر فوري</option>
+                            <option value="limit">أمر محدد</option>
+                            <option value="stop">أمر إيقاف</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" id="limitPriceGroup" style="display: none;">
+                        <label>السعر المحدد</label>
+                        <input type="number" class="form-input" step="0.00001">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>وقف الخسارة</label>
+                        <input type="number" class="form-input" placeholder="اختياري" step="0.00001">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>جني الأرباح</label>
+                        <input type="number" class="form-input" placeholder="اختياري" step="0.00001">
+                    </div>
+                    
+                    <div class="order-summary">
+                        <div class="summary-row">
+                            <span>الهامش المطلوب:</span>
+                            <span id="requiredMargin">$1,085.60</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>قيمة النقطة:</span>
+                            <span id="pipValue">$10.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>السبريد:</span>
+                            <span id="spread">0.2 نقطة</span>
+                        </div>
+                    </div>
+                    
+                    <button class="execute-btn buy" id="executeBtn">
+                        <i class="fas fa-bolt"></i>
+                        <span>تنفيذ أمر الشراء</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="positions-tab">
+                <div class="positions-list">
+                    <div class="position-item profit">
+                        <div class="position-header">
+                            <span class="position-symbol">EUR/USD</span>
+                            <span class="position-type buy">شراء</span>
+                            <span class="position-volume">1.50</span>
+                        </div>
+                        <div class="position-details">
+                            <div class="detail">
+                                <span class="label">سعر الفتح:</span>
+                                <span class="value">1.0834</span>
+                            </div>
+                            <div class="detail">
+                                <span class="label">السعر الحالي:</span>
+                                <span class="value">1.0856</span>
+                            </div>
+                            <div class="detail">
+                                <span class="label">الربح/الخسارة:</span>
+                                <span class="value profit">+$330.00</span>
+                            </div>
+                        </div>
+                        <div class="position-actions">
+                            <button class="action-btn close">إغلاق</button>
+                            <button class="action-btn modify">تعديل</button>
+                        </div>
+                    </div>
+                    
+                    <div class="position-item loss">
+                        <div class="position-header">
+                            <span class="position-symbol">GBP/USD</span>
+                            <span class="position-type sell">بيع</span>
+                            <span class="position-volume">0.75</span>
+                        </div>
+                        <div class="position-details">
+                            <div class="detail">
+                                <span class="label">سعر الفتح:</span>
+                                <span class="value">1.2650</span>
+                            </div>
+                            <div class="detail">
+                                <span class="label">السعر الحالي:</span>
+                                <span class="value">1.2634</span>
+                            </div>
+                            <div class="detail">
+                                <span class="label">الربح/الخسارة:</span>
+                                <span class="value profit">+$120.00</span>
+                            </div>
+                        </div>
+                        <div class="position-actions">
+                            <button class="action-btn close">إغلاق</button>
+                            <button class="action-btn modify">تعديل</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="history-tab">
+                <div class="history-list">
+                    <div class="history-item">
+                        <div class="history-header">
+                            <span class="history-time">10:30</span>
+                            <span class="history-symbol">EUR/USD</span>
+                            <span class="history-type buy">شراء</span>
+                        </div>
+                        <div class="history-details">
+                            <span>الحجم: 1.00</span>
+                            <span>السعر: 1.0820</span>
+                            <span class="profit">الربح: +$180.00</span>
+                        </div>
+                    </div>
+                    
+                    <div class="history-item">
+                        <div class="history-header">
+                            <span class="history-time">09:15</span>
+                            <span class="history-symbol">USD/JPY</span>
+                            <span class="history-type sell">بيع</span>
+                        </div>
+                        <div class="history-details">
+                            <span>الحجم: 0.50</span>
+                            <span>السعر: 149.90</span>
+                            <span class="loss">الخسارة: -$45.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Bottom Panel -->
+    <div class="bottom-panel">
+        <div class="panel-section">
+            <h4>المراكز المفتوحة</h4>
+            <div class="open-positions">
+                <div class="position-summary">
+                    <span class="label">إجمالي المراكز:</span>
+                    <span class="value">2</span>
+                </div>
+                <div class="position-summary">
+                    <span class="label">إجمالي الربح/الخسارة:</span>
+                    <span class="value profit">+$450.00</span>
+                </div>
+                <div class="position-summary">
+                    <span class="label">الهامش المستخدم:</span>
+                    <span class="value">$2,435.60</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel-section">
+            <h4>الأداء اليومي</h4>
+            <div class="performance-chart">
+                <canvas id="performanceChart" width="300" height="100"></canvas>
+            </div>
+        </div>
+        
+        <div class="panel-section">
+            <h4>إحصائيات سريعة</h4>
+            <div class="quick-stats-grid">
+                <div class="stat-item">
+                    <span class="stat-label">الصفقات اليوم</span>
+                    <span class="stat-value">12</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">نسبة النجاح</span>
+                    <span class="stat-value">83%</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">أفضل صفقة</span>
+                    <span class="stat-value">+$320</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">متوسط الربح</span>
+                    <span class="stat-value">+$87</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize trading platform
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeTradingPlatform();
+        });
+
+        function initializeTradingPlatform() {
+            // Initialize charts
+            initializeMainChart();
+            initializeMiniCharts();
+            initializePerformanceChart();
+            
+            // Initialize real-time data
+            startRealTimeUpdates();
+            
+            // Initialize event listeners
+            setupEventListeners();
+            
+            // Initialize order form
+            setupOrderForm();
+        }
+
+        function initializeMainChart() {
+            const canvas = document.getElementById('tradingChart');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas size
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            
+            // Generate sample candlestick data
+            const data = generateCandlestickData(100);
+            drawCandlestickChart(ctx, data, canvas.width, canvas.height);
+        }
+
+        function generateCandlestickData(count) {
+            const data = [];
+            let price = 1.0800;
+            
+            for (let i = 0; i < count; i++) {
+                const open = price;
+                const change = (Math.random() - 0.5) * 0.01;
+                const close = open + change;
+                const high = Math.max(open, close) + Math.random() * 0.005;
+                const low = Math.min(open, close) - Math.random() * 0.005;
+                
+                data.push({ open, high, low, close });
+                price = close;
+            }
+            
+            return data;
+        }
+
+        function drawCandlestickChart(ctx, data, width, height) {
+            const padding = 50;
+            const chartWidth = width - 2 * padding;
+            const chartHeight = height - 2 * padding;
+            
+            // Find price range
+            const prices = data.flatMap(d => [d.high, d.low]);
+            const minPrice = Math.min(...prices);
+            const maxPrice = Math.max(...prices);
+            const priceRange = maxPrice - minPrice;
+            
+            // Clear canvas
+            ctx.fillStyle = '#1a1a1a';
+            ctx.fillRect(0, 0, width, height);
+            
+            // Draw grid
+            ctx.strokeStyle = '#333';
+            ctx.lineWidth = 1;
+            
+            // Horizontal grid lines
+            for (let i = 0; i <= 10; i++) {
+                const y = padding + (chartHeight / 10) * i;
+                ctx.beginPath();
+                ctx.moveTo(padding, y);
+                ctx.lineTo(width - padding, y);
+                ctx.stroke();
+            }
+            
+            // Vertical grid lines
+            for (let i = 0; i <= 10; i++) {
+                const x = padding + (chartWidth / 10) * i;
+                ctx.beginPath();
+                ctx.moveTo(x, padding);
+                ctx.lineTo(x, height - padding);
+                ctx.stroke();
+            }
+            
+            // Draw candlesticks
+            const candleWidth = chartWidth / data.length * 0.8;
+            
+            data.forEach((candle, index) => {
+                const x = padding + (chartWidth / data.length) * index + (chartWidth / data.length - candleWidth) / 2;
+                const openY = padding + chartHeight - ((candle.open - minPrice) / priceRange) * chartHeight;
+                const closeY = padding + chartHeight - ((candle.close - minPrice) / priceRange) * chartHeight;
+                const highY = padding + chartHeight - ((candle.high - minPrice) / priceRange) * chartHeight;
+                const lowY = padding + chartHeight - ((candle.low - minPrice) / priceRange) * chartHeight;
+                
+                const isGreen = candle.close > candle.open;
+                ctx.fillStyle = isGreen ? '#4CAF50' : '#F44336';
+                ctx.strokeStyle = isGreen ? '#4CAF50' : '#F44336';
+                
+                // Draw wick
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(x + candleWidth / 2, highY);
+                ctx.lineTo(x + candleWidth / 2, lowY);
+                ctx.stroke();
+                
+                // Draw body
+                const bodyTop = Math.min(openY, closeY);
+                const bodyHeight = Math.abs(closeY - openY);
+                ctx.fillRect(x, bodyTop, candleWidth, bodyHeight);
+            });
+            
+            // Draw price labels
+            ctx.fillStyle = '#fff';
+            ctx.font = '12px Cairo';
+            ctx.textAlign = 'right';
+            
+            for (let i = 0; i <= 10; i++) {
+                const price = minPrice + (priceRange / 10) * i;
+                const y = height - padding - (chartHeight / 10) * i;
+                ctx.fillText(price.toFixed(5), width - padding - 10, y + 4);
+            }
+        }
+
+        function initializeMiniCharts() {
+            const miniCharts = document.querySelectorAll('.mini-chart canvas');
+            
+            miniCharts.forEach(canvas => {
+                const ctx = canvas.getContext('2d');
+                drawMiniChart(ctx, canvas.width, canvas.height);
+            });
+        }
+
+        function drawMiniChart(ctx, width, height) {
+            // Generate sample line data
+            const points = 20;
+            const data = [];
+            let value = 50;
+            
+            for (let i = 0; i < points; i++) {
+                value += (Math.random() - 0.5) * 10;
+                data.push(Math.max(0, Math.min(100, value)));
+            }
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, width, height);
+            
+            // Draw line
+            ctx.strokeStyle = '#4CAF50';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            
+            data.forEach((point, index) => {
+                const x = (width / (points - 1)) * index;
+                const y = height - (point / 100) * height;
+                
+                if (index === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            });
+            
+            ctx.stroke();
+        }
+
+        function initializePerformanceChart() {
+            const canvas = document.getElementById('performanceChart');
+            const ctx = canvas.getContext('2d');
+            
+            // Generate sample performance data
+            const data = [];
+            let balance = 125000;
+            
+            for (let i = 0; i < 24; i++) {
+                balance += (Math.random() - 0.3) * 1000;
+                data.push(balance);
+            }
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw performance line
+            ctx.strokeStyle = '#4CAF50';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            
+            data.forEach((point, index) => {
+                const x = (canvas.width / (data.length - 1)) * index;
+                const y = canvas.height - ((point - 120000) / 10000) * canvas.height;
+                
+                if (index === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            });
+            
+            ctx.stroke();
+        }
+
+        function startRealTimeUpdates() {
+            setInterval(() => {
+                updatePrices();
+                updateStats();
+            }, 1000);
+        }
+
+        function updatePrices() {
+            const symbols = document.querySelectorAll('.symbol-item');
+            
+            symbols.forEach(symbol => {
+                const priceElement = symbol.querySelector('.price');
+                const changeElement = symbol.querySelector('.change');
+                
+                if (priceElement) {
+                    const currentPrice = parseFloat(priceElement.textContent);
+                    const change = (Math.random() - 0.5) * 0.001;
+                    const newPrice = currentPrice + change;
+                    
+                    priceElement.textContent = newPrice.toFixed(5);
+                    
+                    // Update change
+                    const changeValue = change;
+                    const changePercent = (change / currentPrice) * 100;
+                    
+                    changeElement.textContent = `${change >= 0 ? '+' : ''}${changeValue.toFixed(5)} (${changePercent >= 0 ? '+' : ''}${changePercent.toFixed(2)}%)`;
+                    changeElement.className = `change ${change >= 0 ? 'positive' : 'negative'}`;
+                }
+            });
+        }
+
+        function updateStats() {
+            const balance = document.getElementById('accountBalance');
+            const pnl = document.getElementById('dailyPnL');
+            
+            if (balance) {
+                const currentBalance = parseFloat(balance.textContent.replace(/[$,]/g, ''));
+                const change = (Math.random() - 0.4) * 100;
+                const newBalance = currentBalance + change;
+                balance.textContent = '$' + newBalance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            }
+            
+            if (pnl) {
+                const currentPnL = parseFloat(pnl.textContent.replace(/[+$,]/g, ''));
+                const change = (Math.random() - 0.3) * 50;
+                const newPnL = currentPnL + change;
+                pnl.textContent = (newPnL >= 0 ? '+' : '') + '$' + Math.abs(newPnL).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                pnl.className = `value ${newPnL >= 0 ? 'positive' : 'negative'}`;
+            }
+        }
+
+        function setupEventListeners() {
+            // Tab switching
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+            });
+            
+            // Symbol selection
+            const symbolItems = document.querySelectorAll('.symbol-item');
+            symbolItems.forEach(item => {
+                item.addEventListener('click', () => selectSymbol(item.dataset.symbol));
+            });
+            
+            // Order type selection
+            const orderTypeBtns = document.querySelectorAll('.order-type-btn');
+            orderTypeBtns.forEach(btn => {
+                btn.addEventListener('click', () => selectOrderType(btn.dataset.type));
+            });
+            
+            // Timeframe selection
+            const timeframeBtns = document.querySelectorAll('.timeframe-btn');
+            timeframeBtns.forEach(btn => {
+                btn.addEventListener('click', () => selectTimeframe(btn));
+            });
+        }
+
+        function switchTab(tabName) {
+            // Remove active class from all tabs and contents
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            // Add active class to selected tab and content
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            document.getElementById(`${tabName}-tab`).classList.add('active');
+        }
+
+        function selectSymbol(symbol) {
+            // Remove active class from all symbols
+            document.querySelectorAll('.symbol-item').forEach(item => item.classList.remove('active'));
+            
+            // Add active class to selected symbol
+            document.querySelector(`[data-symbol="${symbol}"]`).classList.add('active');
+            
+            // Update chart header
+            document.querySelector('.current-symbol').textContent = symbol;
+            
+            // Update chart (in a real app, you would fetch new data)
+            initializeMainChart();
+        }
+
+        function selectOrderType(type) {
+            // Remove active class from all order type buttons
+            document.querySelectorAll('.order-type-btn').forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to selected button
+            document.querySelector(`[data-type="${type}"]`).classList.add('active');
+            
+            // Update execute button
+            const executeBtn = document.getElementById('executeBtn');
+            executeBtn.className = `execute-btn ${type}`;
+            executeBtn.innerHTML = `
+                <i class="fas fa-bolt"></i>
+                <span>تنفيذ أمر ${type === 'buy' ? 'الشراء' : 'البيع'}</span>
+            `;
+        }
+
+        function selectTimeframe(btn) {
+            // Remove active class from all timeframe buttons
+            document.querySelectorAll('.timeframe-btn').forEach(b => b.classList.remove('active'));
+            
+            // Add active class to selected button
+            btn.classList.add('active');
+            
+            // Update chart (in a real app, you would fetch data for the new timeframe)
+            initializeMainChart();
+        }
+
+        function setupOrderForm() {
+            const orderTypeSelect = document.getElementById('orderTypeSelect');
+            const limitPriceGroup = document.getElementById('limitPriceGroup');
+            const executeBtn = document.getElementById('executeBtn');
+            
+            orderTypeSelect.addEventListener('change', function() {
+                if (this.value === 'limit' || this.value === 'stop') {
+                    limitPriceGroup.style.display = 'block';
+                } else {
+                    limitPriceGroup.style.display = 'none';
+                }
+            });
+            
+            executeBtn.addEventListener('click', executeOrder);
+        }
+
+        function adjustVolume(amount) {
+            const volumeInput = document.querySelector('.volume-input');
+            const currentVolume = parseFloat(volumeInput.value);
+            const newVolume = Math.max(0.01, currentVolume + amount);
+            volumeInput.value = newVolume.toFixed(2);
+            updateOrderSummary();
+        }
+
+        function setVolume(volume) {
+            const volumeInput = document.querySelector('.volume-input');
+            volumeInput.value = volume.toFixed(2);
+            updateOrderSummary();
+        }
+
+        function updateOrderSummary() {
+            const volume = parseFloat(document.querySelector('.volume-input').value);
+            const currentPrice = 1.0856; // In a real app, get this from the current symbol
+            
+            const requiredMargin = volume * 100000 * currentPrice * 0.01; // 1% margin
+            const pipValue = volume * 10; // $10 per pip for EUR/USD
+            
+            document.getElementById('requiredMargin').textContent = '$' + requiredMargin.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('pipValue').textContent = '$' + pipValue.toFixed(2);
+        }
+
+        function executeOrder() {
+            const executeBtn = document.getElementById('executeBtn');
+            executeBtn.classList.add('loading');
+            
+            // Simulate order execution
+            setTimeout(() => {
+                executeBtn.classList.remove('loading');
+                showOrderConfirmation();
+            }, 1500);
+        }
+
+        function showOrderConfirmation() {
+            const modal = document.createElement('div');
+            modal.className = 'order-modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="order-success">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>تم تنفيذ الأمر بنجاح!</h3>
+                        <div class="order-details">
+                            <div class="detail-row">
+                                <span>الرمز:</span>
+                                <span>EUR/USD</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>النوع:</span>
+                                <span>شراء</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>الحجم:</span>
+                                <span>1.00 لوت</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>السعر:</span>
+                                <span>1.0856</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>رقم الأمر:</span>
+                                <span>#TXN${Date.now()}</span>
+                            </div>
+                        </div>
+                        <button onclick="closeOrderModal()" class="btn-primary">موافق</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        function closeOrderModal() {
+            const modal = document.querySelector('.order-modal');
+            if (modal) {
+                modal.remove();
+            }
+        }
+
+        // Initialize order summary on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateOrderSummary();
+        });
+    </script>
+</body>
+</html>
